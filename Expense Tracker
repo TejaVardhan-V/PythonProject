@@ -1,0 +1,31 @@
+class ExpenseTracker:
+
+    def __init__(self):
+        self.expenses = {}
+
+    def add_expense(self, category, amount):
+        if category not in self.expenses:
+            self.expenses[category] = []
+        self.expenses[category].append(amount)
+        print(f"Added {amount} to {category}")
+
+    def list_expenses(self):
+        for category, amounts in self.expenses.items():
+            print(f"{category}:")
+            for amount in amounts:
+                print(f" - {amount}")
+
+    def total_expenses(self):
+        total = 0
+        for amounts in self.expenses.values():
+            total += sum(amounts)
+        return total
+tracker = ExpenseTracker()
+tracker.add_expense('Food',
+                    int(input("Enter the amount of moeny Spent on Food:")))
+tracker.add_expense(
+    'Transport', int(input("Enter the ampunt of money spent on Transport:")))
+tracker.add_expense(
+    'Groceries', int(input("Enter the ampunt of money spent on Groceries:")))
+tracker.list_expenses()
+print("Total Spent:", tracker.total_expenses())
